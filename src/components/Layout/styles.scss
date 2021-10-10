@@ -1,0 +1,38 @@
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  padding: 0 5%;
+  background: var(--elements);
+
+  &__title {
+    font-size: 1.6rem;
+    transition: border 150ms;
+
+    &:hover {
+      border-block-end: 0.2rem solid var(--shadow);
+    }
+  }
+
+  &__theme-switch {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: border 150ms;
+
+    &:hover {
+      border-block-end: 0.2rem solid var(--shadow);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+
+      span {
+        margin-inline-start: 0.7rem;
+      }
+    }
+  }
+}
