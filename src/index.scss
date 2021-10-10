@@ -1,0 +1,68 @@
+// Khai bao bien trong pseudo:root (the <html>) tuc la vi tri cao nhat.
+:root {
+  --elements: hsl(0, 0%, 100%);
+  --bg: hsl(0, 0%, 98%);
+  --shadow: hsl(0, 0%, 90%);
+  --text: hsl(200, 15%, 8%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; //tuong duong 10px
+  font-family: 'Nunito Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-size: 1.5rem;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 150ms, color 150ms;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+button,
+input {
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: var(--elements);
+  color: var(--text);
+
+  &::placeholder {
+    color: inherit;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 860px) {
+  html {
+    font-size: 70%;
+  }
+}
