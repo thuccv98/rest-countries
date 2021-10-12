@@ -1,18 +1,43 @@
 import { FaSearch } from 'react-icons/fa';
 import { BiChevronLeft } from 'react-icons/bi';
 import './styles.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-  const [countriesList, setCountriesList] = useState([]);
+  const [countriesData, setCountriesData] = useState([]);
+  const [search, setSearch] = useState('');
+  const [filterKey, setFilterKey] = useState('name');
+  const searchRef = useRef(null);
+
+  // function handle search by name
+  const handleSearch = () => {
+    const value = searchRef.current.value;
+    setFilterKey('name');
+    setSearch(value);
+  };
+
+  // function handle filter by region
+  const handleFilter = (e) => {
+    const value = e.target.value;
+
+    if (value) {
+      setFilterKey('region');
+      setSearch(value);
+    }
+  };
+
+  // danh sach country duoc loc theo yeu cau
+  const filteredCountries = countriesData.filter((country) =>
+    country[filterKey].toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchCountriesList = async () => {
       try {
         const url = 'https://restcountries.com/v2/all';
         const response = await axios.get(url);
-        setCountriesList(response.data);
+        setCountriesData(response.data);
       } catch (error) {
         console.log('Failed to fetch countries list', error);
       }
@@ -26,14 +51,19 @@ const Home = () => {
       <div className="search">
         <div className="search__bar">
           <FaSearch className="icon" />
-          <input type="search" placeholder="Search for a country..." />
+          <input
+            ref={searchRef}
+            type="search"
+            placeholder="Search for a country..."
+            onChange={handleSearch}
+          />
         </div>
         <details className="search__filter">
           <summary>
             <span>Filter by Region</span>
             <BiChevronLeft className="icon" />
           </summary>
-          <div>
+          <div onClick={handleFilter}>
             <button type="button" value="Africa">
               Africa
             </button>
@@ -55,9 +85,9 @@ const Home = () => {
 
       {/* list contries section */}
       <div className="cardGrid">
-        {countriesList.map((country) => {
+        {filteredCountries.map((country) => {
           return (
-            <div className="card">
+            <div className="card" key={country.alpha3Code}>
               <div className="card__img">
                 <img src={country.flag} alt="" />
               </div>
