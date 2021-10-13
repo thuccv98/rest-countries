@@ -6,6 +6,13 @@
   --text: hsl(200, 15%, 8%);
 }
 
+[data-theme='dark'] {
+  --elements: hsl(209, 23%, 22%);
+  --bg: hsl(207, 26%, 17%);
+  --shadow: hsl(209, 23%, 12%);
+  --text: hsl(0, 0%, 100%);
+}
+
 * {
   margin: 0;
   padding: 0;
