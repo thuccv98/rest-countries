@@ -1,0 +1,138 @@
+.countryDetails {
+  margin: 5vw 5%;
+
+  &__back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    background: var(--elements);
+    box-shadow: var(--shadow) 0 0 1rem 0.2rem;
+
+    span {
+      margin-left: 1rem;
+    }
+  }
+
+  .container {
+    display: flex;
+    column-gap: 12vw;
+
+    &__img {
+      width: 50%;
+      margin: 5vw 0;
+
+      img {
+        max-width: 100%;
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    &__details {
+      width: 50%;
+      margin-top: 5vw;
+      font-size: 1vw;
+
+      &-info {
+        margin: 5rem 0;
+
+        h1 {
+          margin: 2rem 0;
+        }
+
+        div {
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 10vw;
+          li {
+            font-weight: 700;
+            line-height: 2vw;
+            white-space: nowrap;
+            span {
+              margin-left: 0.3rem;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      &-borders {
+        display: flex;
+        align-items: center;
+
+        h2 {
+          font-size: 1vw;
+          white-space: nowrap;
+        }
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          row-gap: 1rem;
+          li {
+            cursor: pointer;
+            border-radius: 0.25rem;
+            margin-left: 1rem;
+            padding: 0.25rem 2rem;
+            background: var(--elements);
+            box-shadow: var(--shadow) 0 0 1rem 0.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .countryDetails {
+    &__back {
+      margin: 3rem 0;
+    }
+
+    .container {
+      flex-direction: column;
+
+      &__img {
+        width: 100%;
+      }
+
+      &__details {
+        width: 100%;
+        font-size: 1rem;
+
+        &-info {
+          div {
+            flex-direction: column;
+            row-gap: 3rem;
+
+            li {
+              font-size: 1.4rem;
+              line-height: 1.8rem;
+            }
+          }
+        }
+
+        &-borders {
+          flex-direction: column;
+          align-items: flex-start;
+
+          h2 {
+            font-size: 1.4rem;
+          }
+
+          ul {
+            row-gap: 1rem;
+            margin: 2rem 0;
+
+            li {
+              margin: 0 1rem 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
