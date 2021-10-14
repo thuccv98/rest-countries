@@ -3,8 +3,8 @@ import { BiChevronLeft } from 'react-icons/bi';
 import './styles.scss';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading';
+import Card from '../../components/Card';
 
 const Home = () => {
   const [countriesData, setCountriesData] = useState([]);
@@ -96,34 +96,14 @@ const Home = () => {
         <div className="cardGrid">
           {filteredCountries.length > 0 ? (
             filteredCountries.map((country) => (
-              <div className="card" key={country.alpha3Code}>
-                <Link to={`/country/${country.alpha3Code}`}>
-                  <div className="card__img">
-                    <img src={country.flag} alt="" />
-                  </div>
-                  <div className="card__details">
-                    <h2>{country.name}</h2>
-                    <ul>
-                      <li>
-                        Population:{' '}
-                        <span>
-                          {new Intl.NumberFormat('en-US', {
-                            maximumSignificantDigits: 3,
-                          }).format(country.population)}
-                        </span>
-                      </li>
-                      <li>
-                        Region: <span>{country.region}</span>
-                      </li>
-                      {country.capital && (
-                        <li>
-                          Capital: <span>{country.capital}</span>
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                </Link>
-              </div>
+              <Card
+                id={country.alpha3Code}
+                flag={country.flag}
+                name={country.name}
+                population={country.population}
+                region={country.region}
+                capital={country.capital}
+              />
             ))
           ) : (
             <p>No results found for: {search}</p>
